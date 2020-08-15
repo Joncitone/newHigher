@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { firebase } from './src/firebase/config';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import store from './src/store';
 
 import {
   LoginScreen,
