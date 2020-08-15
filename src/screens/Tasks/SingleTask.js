@@ -13,6 +13,7 @@ import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function SingleTask(props) {
+  const { user } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -37,8 +38,12 @@ export function SingleTask(props) {
   return <div>Single Task Screen</div>;
 }
 
-const mapState = (state) => {};
+const mapState = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
 const mapDispatch = (dispatch) => {};
 
-export default connect(mapState, mapDispatch)(SingleTask);
+export default connect(mapState, null)(SingleTask);

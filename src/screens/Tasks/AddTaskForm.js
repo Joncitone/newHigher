@@ -14,6 +14,7 @@ import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function AddTaskForm(props) {
+  const { user } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -34,8 +35,12 @@ export function AddTaskForm(props) {
   return <div>Add Task Form</div>;
 }
 
-const mapState = (state) => {};
+const mapState = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
 const mapDispatch = (dispatch) => {};
 
-export default connect(mapState, mapDispatch)(AddTaskForm);
+export default connect(mapState, null)(AddTaskForm);

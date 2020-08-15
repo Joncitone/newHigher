@@ -13,6 +13,7 @@ import styles from './styles';
 import { connect } from 'react-redux';
 
 export function EditListForm(props) {
+  const { user } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -33,8 +34,12 @@ export function EditListForm(props) {
   return <div>Edit List Form</div>;
 }
 
-const mapState = (state) => {};
+const mapState = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
 const mapDispatch = (dispatch) => {};
 
-export default connect(mapState, mapDispatch)(EditListForm);
+export default connect(mapState, null)(EditListForm);

@@ -12,6 +12,7 @@ import styles from './styles';
 import { connect } from 'react-redux';
 
 export function SingleList(props) {
+  const { user } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -36,8 +37,12 @@ export function SingleList(props) {
   return <div>Single List Screen</div>;
 }
 
-const mapState = (state) => {};
+const mapState = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
 const mapDispatch = (dispatch) => {};
 
-export default connect(mapState, mapDispatch)(SingleList);
+export default connect(mapState, null)(SingleList);
