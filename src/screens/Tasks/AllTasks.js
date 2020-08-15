@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { connect } from 'react-redux';
 
-export default function AllTasks(props) {
+export function AllTasks(props) {
   //userID passed down through props
   const userID = props.user.id;
 
@@ -36,3 +37,9 @@ export default function AllTasks(props) {
 
   return <div>All Tasks Screen</div>;
 }
+
+const mapState = (state) => {};
+
+const mapDispatch = (dispatch) => {};
+
+export default connect(mapState, mapDispatch)(AllTasks);

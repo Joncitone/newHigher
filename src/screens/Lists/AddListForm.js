@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { connect } from 'react-redux';
 
-export default function AddListForm(props) {
+export function AddListForm(props) {
   //userID passed down through props
   const userID = props.user.id;
 
@@ -37,3 +38,9 @@ export default function AddListForm(props) {
 
   return <div>Add List Form</div>;
 }
+
+const mapState = (state) => {};
+
+const mapDispatch = (dispatch) => {};
+
+export default connect(mapState, mapDispatch)(AddListForm);

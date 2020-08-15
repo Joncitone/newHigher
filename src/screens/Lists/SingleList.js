@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { connect } from 'react-redux';
 
-export default function SingleList(props) {
+export function SingleList(props) {
   //userID passed down through props
   const userID = props.user.id;
 
@@ -41,3 +42,9 @@ export default function SingleList(props) {
 
   return <div>Single List Screen</div>;
 }
+
+const mapState = (state) => {};
+
+const mapDispatch = (dispatch) => {};
+
+export default connect(mapState, mapDispatch)(SingleList);

@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+import { connect } from 'react-redux';
 
-export default function AllLists(props) {
+export function AllLists(props) {
   //userID passed down through props
   const userID = props.user.id;
 
@@ -36,3 +37,9 @@ export default function AllLists(props) {
 
   return <div>All Lists Screen</div>;
 }
+
+const mapState = (state) => {};
+
+const mapDispatch = (dispatch) => {};
+
+export default connect(mapState, mapDispatch)(AllLists);
