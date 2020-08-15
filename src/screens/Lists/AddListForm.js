@@ -11,7 +11,7 @@ import {
 import styles from './styles';
 import { firebase } from '../../firebase/config';
 
-export default function EditListForm(props) {
+export default function AddListForm(props) {
   //userID passed down through props
   const userID = props.user.id;
 
@@ -35,5 +35,5 @@ export default function EditListForm(props) {
     //actions to proceed from Add List button being clicked
   };
 
-  return <div>Edit List Form</div>;
+  return <div>Add List Form</div>;
 }

@@ -11,13 +11,13 @@ import {
 import styles from './styles';
 import { firebase } from '../../firebase/config';
 
-export default function EditListForm(props) {
+export default function AddTaskForm(props) {
   //userID passed down through props
   const userID = props.user.id;
 
   //reference to collection in firestore database
-  //singleList will be a document of the list sub-collection so this reference will change
-  const singleListRef = firebase.firestore().collection('lists');
+  //singleTask will be a document of the task sub-collection so this reference will change
+  const singleLTaskRef = firebase.firestore().collection('tasks');
 
   //useState Hook for functional component
   const [state, setState] = useState('');
@@ -35,5 +35,5 @@ export default function EditListForm(props) {
     //actions to proceed from Add List button being clicked
   };
 
-  return <div>Edit List Form</div>;
+  return <div>Add Task Form</div>;
 }

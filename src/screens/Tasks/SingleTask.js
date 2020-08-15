@@ -9,3 +9,34 @@ import {
 } from 'react-native';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
+
+export default function SingleTask(props) {
+  //userID passed down through props
+  const userID = props.user.id;
+
+  //reference to collection in firestore database
+  //lists will be a sub collection on user documents, so this reference will change
+  const singleTaskRef = firebase.firestore().collection('tasks');
+
+  //useState Hook for functional component
+  const [state, setState] = useState('');
+
+  //useEffect Hook for initial loading of page resources upon mounting
+  useEffect(() => {
+    //see HomeScreen for example of loading information from firestore
+  }, []);
+
+  const onCheckTask = () => {
+    //actions to proceed after checking off a task (point increment)
+  };
+
+  const onUncheckTask = () => {
+    //actions to proceed after unchecking a task (point decrement)
+  };
+
+  const onAddTask = () => {
+    //action to proceed after clicking add task (add task form)
+  };
+
+  return <div>Single Task Screen</div>;
+}
