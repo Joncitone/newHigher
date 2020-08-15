@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import {
   FlatList,
@@ -13,16 +14,10 @@ import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function AddTaskForm(props) {
-  //userID passed down through props
-  const userID = props.user.id;
-
-  //reference to collection in firestore database
-  //singleTask will be a document of the task sub-collection so this reference will change
-  const singleLTaskRef = firebase.firestore().collection('tasks');
-
   //useState Hook for functional component
   const [state, setState] = useState('');
-
+  //navigation hook
+  const navigation = useNavigation();
   //useForm Hook for demo usage see https://react-hook-form.com
   //eliminates need for multiple useState values above
   const { register, handleSubmit, setValue } = useForm();

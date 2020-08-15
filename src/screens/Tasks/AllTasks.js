@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   FlatList,
   Keyboard,
@@ -12,16 +13,10 @@ import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function AllTasks(props) {
-  //userID passed down through props
-  const userID = props.user.id;
-
-  //reference to collection in firestore database
-  //taks will be a sub collection on list documents, so this reference will change
-  const allTasksRef = firebase.firestore().collection('tasks');
-
   //useState Hook for functional component
   const [state, setState] = useState('');
-
+  //navigation hook
+  const navigation = useNavigation();
   //useEffect Hook for initial loading of page resources upon mounting
   useEffect(() => {
     //see HomeScreen for example of loading information from firestore

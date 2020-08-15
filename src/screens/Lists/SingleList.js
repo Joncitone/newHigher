@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   FlatList,
   Keyboard,
@@ -8,21 +9,13 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function SingleList(props) {
-  //userID passed down through props
-  const userID = props.user.id;
-
-  //reference to collection in firestore database
-  //lists will be a sub collection on user documents, so this reference will change
-  const singleListRef = firebase.firestore().collection('lists');
-  const allTasksRef = firebase.firestore().collection();
-
   //useState Hook for functional component
   const [state, setState] = useState('');
-
+  //navigation hook
+  const navigation = useNavigation();
   //useEffect Hook for initial loading of page resources upon mounting
   useEffect(() => {
     //see HomeScreen for example of loading information from firestore
