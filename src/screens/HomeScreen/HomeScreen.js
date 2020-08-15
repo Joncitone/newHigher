@@ -18,6 +18,7 @@ export default function HomeScreen(props) {
   const userID = props.user.id;
 
   useEffect(() => {
+    //load all documents in entity collection belonging to user
     entityRef
       .where('authorID', '==', userID)
       .orderBy('createdAt', 'desc')
@@ -37,21 +38,30 @@ export default function HomeScreen(props) {
       );
   }, []);
 
+  //handlerFunction for when button gets clicked/pressed
   const onAddButtonPress = () => {
+    //run the following if the field isn't empty
     if (entityText && entityText.length > 0) {
+      //set timestamp
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
+      //build object with document fields
       const data = {
         text: entityText,
         authorID: userID,
         createdAt: timestamp,
       };
+
+      //add new document to database
       entityRef
         .add(data)
         .then((_doc) => {
+          //promise chain to set local state to empty
           setEntityText('');
           Keyboard.dismiss();
         })
         .catch((error) => {
+          //catch statement for error-handling (promise rejection)
           alert(error);
         });
     }
@@ -83,6 +93,7 @@ export default function HomeScreen(props) {
           <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </View>
+      {/* Conditional rendering of entities */}
       {entities && (
         <View style={styles.listContainer}>
           <FlatList
