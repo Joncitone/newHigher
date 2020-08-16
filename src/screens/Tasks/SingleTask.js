@@ -35,7 +35,11 @@ export function SingleTask(props) {
     //action to proceed after clicking add task (add task form)
   };
 
-  return <div>Single Task Screen</div>;
+  return (
+    <View>
+      <Text>Single Task Page</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

@@ -32,7 +32,11 @@ export function EditTaskForm(props) {
     //actions to proceed from Add List button being clicked
   };
 
-  return <div>Edit Task Form</div>;
+  return (
+    <View>
+      <Text>Edit Task Form</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

@@ -31,7 +31,11 @@ export function AddListForm(props) {
     //actions to proceed from Add List button being clicked
   };
 
-  return <div>Add List Form</div>;
+  return (
+    <View>
+      <Text>Add List Form</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

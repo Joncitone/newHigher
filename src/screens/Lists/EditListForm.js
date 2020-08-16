@@ -31,7 +31,11 @@ export function EditListForm(props) {
     //actions to proceed from Add List button being clicked
   };
 
-  return <div>Edit List Form</div>;
+  return (
+    <View>
+      <Text>Edit List Form</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

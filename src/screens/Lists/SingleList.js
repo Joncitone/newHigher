@@ -34,7 +34,11 @@ export function SingleList(props) {
     //action to proceed after clicking add task (add task form)
   };
 
-  return <div>Single List Screen</div>;
+  return (
+    <View>
+      <Text>Single List Page</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

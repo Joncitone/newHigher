@@ -31,7 +31,11 @@ export function AllTasks(props) {
     //actions to proceed from Clicking an Existing List, navigate to Single List Screen
   };
 
-  return <div>All Tasks Screen</div>;
+  return (
+    <View>
+      <Text>All Tasks Page</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {

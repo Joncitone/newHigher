@@ -5,7 +5,6 @@ import { firebase } from './src/firebase/config';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import store from './src/store';
-
 import {
   LoginScreen,
   HomeScreen,
@@ -21,14 +20,9 @@ import {
   AddTaskForm,
   EditTaskForm,
 } from './src/screens';
-
 import { decode, encode } from 'base-64';
-if (!global.btoa) {
-  global.btoa = encode;
-}
-if (!global.atob) {
-  global.atob = decode;
-}
+!global.btoa ? (global.btoa = encode) : null;
+!global.atob ? (global.atob = decode) : null;
 
 const Stack = createStackNavigator();
 
@@ -72,7 +66,7 @@ export default function App() {
                 {(props) => <HomeScreen {...props} user={user} />}
               </Stack.Screen>
               <Stack.Screen name="AddListForm" component={AddListForm} />
-              <Stack.Screen name="AllLists" component={AllLists} />
+              <Stack.Screen name="Lists" component={AllLists} />
               <Stack.Screen name="EditListForm" component={EditListForm} />
               <Stack.Screen name="SingleList" component={SingleList} />
               <Stack.Screen name="AddTaskForm" component={AddTaskForm} />

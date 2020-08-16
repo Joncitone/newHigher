@@ -31,7 +31,11 @@ export function AllLists(props) {
     //actions to proceed from Clicking an Existing List, navigate to Single List Screen
   };
 
-  return <div>All Lists Screen</div>;
+  return (
+    <View>
+      <Text>All Lists Page</Text>
+    </View>
+  );
 }
 
 const mapState = (state) => {
