@@ -65,14 +65,14 @@ export default function App() {
               <Stack.Screen name="Home">
                 {(props) => <HomeScreen {...props} user={user} />}
               </Stack.Screen>
-              <Stack.Screen name="AddListForm" component={AddListForm} />
-              <Stack.Screen name="Lists" component={AllLists} />
-              <Stack.Screen name="EditListForm" component={EditListForm} />
-              <Stack.Screen name="SingleList" component={SingleList} />
-              <Stack.Screen name="AddTaskForm" component={AddTaskForm} />
-              <Stack.Screen name="AllTasks" component={AllTasks} />
-              <Stack.Screen name="EditTaskForm" component={EditTaskForm} />
-              <Stack.Screen name="SingleTask" component={SingleTask} />
+              <Stack.Screen name="Add List" component={AddListForm} />
+              <Stack.Screen name="My Lists" component={AllLists} />
+              <Stack.Screen name="Edit List" component={EditListForm} />
+              <Stack.Screen name="List" component={SingleList} />
+              <Stack.Screen name="Add Task" component={AddTaskForm} />
+              <Stack.Screen name="My Tasks" component={AllTasks} />
+              <Stack.Screen name="Edit Task" component={EditTaskForm} />
+              <Stack.Screen name="Task" component={SingleTask} />
             </>
           ) : (
             <>

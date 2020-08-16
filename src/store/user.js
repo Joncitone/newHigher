@@ -1,4 +1,5 @@
 import { firebase } from '../firebase/config';
+
 //ACTION TYPES
 const SET_USER = 'SET_USER';
 
