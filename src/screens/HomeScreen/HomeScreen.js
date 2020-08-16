@@ -9,10 +9,9 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import { firebase } from '../../firebase/config';
-import user from '../../store/user';
+import { connect } from 'react-redux';
 
-export default function HomeScreen(props) {
+export function HomeScreen(props) {
   //const [entityText, setEntityText] = useState('');
   //const [entities, setEntities] = useState([]);
   const navigation = useNavigation();
@@ -24,7 +23,7 @@ export default function HomeScreen(props) {
   //handlerFunction for when button gets clicked/pressed
   const onGoToListsPress = () => {
     //see awp-reactnative-firebase for original code here
-    navigation.navigate('Lists');
+    navigation.navigate('My Lists');
   };
 
   return (
@@ -42,3 +41,9 @@ export default function HomeScreen(props) {
     </View>
   );
 }
+
+const mapState = (state) => {};
+
+const mapDispatch = (dispatch) => {};
+
+export default connect(null, null)(HomeScreen);

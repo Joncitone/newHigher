@@ -1,4 +1,5 @@
 import { firebase } from '../firebase/config';
+const db = firebase.firestore();
 
 //ACTION TYPES
 const SET_USER = 'SET_USER';
@@ -7,6 +8,21 @@ const SET_USER = 'SET_USER';
 const setUser = (user) => ({ type: SET_USER, user });
 
 //THUNKS (call to firebase db here on user collection for specific doc)
+export const setAllUsersThunk = () => {
+  return async (dispatch) => {
+    try {
+      const usersRef = db.collection('users');
+      const users = await usersRef.get();
+      users.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data());
+      });
+      return;
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+};
+
 export const loginUserThunk = (email, password) => {
   return async (dispatch) => {
     try {
@@ -15,7 +31,7 @@ export const loginUserThunk = (email, password) => {
         .signInWithEmailAndPassword(email, password);
 
       const { uid } = response.user;
-      const usersRef = await firebase.firestore().collection('users');
+      const usersRef = await db.collection('users');
       const userDoc = await usersRef.doc(uid).get();
 
       if (!userDoc.exists) {
@@ -46,7 +62,7 @@ export const signUpUserThunk = (email, password, fullName) => {
         fullName,
       };
 
-      const usersRef = await firebase.firestore().collection('users');
+      const usersRef = await db.collection('users');
       await usersRef.doc(uid).set(user);
       dispatch(setUser(user));
     } catch (err) {
