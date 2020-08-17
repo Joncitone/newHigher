@@ -11,9 +11,11 @@ import {
 import styles from './styles';
 import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
+import { setAllListsThunk } from '../../store/list';
+import { setUserThunk } from '../../store/user';
 
 export function AllLists(props) {
-  const { user } = props;
+  const { getUser, user, getAllLists, allLists } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -21,6 +23,8 @@ export function AllLists(props) {
   //useEffect Hook for initial loading of page resources upon mounting
   useEffect(() => {
     //see HomeScreen for example of loading information from firestore
+    getUser();
+    getAllLists();
   }, []);
 
   const onAddList = () => {
@@ -31,9 +35,26 @@ export function AllLists(props) {
     //actions to proceed from Clicking an Existing List, navigate to Single List Screen
   };
 
+  const renderList = ({ item }) => {
+    return (
+      <View style={styles.allListsContainer}>
+        <Text style={styles.listName}>{item.listName}</Text>
+      </View>
+    );
+  };
+
   return (
-    <View>
-      <Text>All Lists Page</Text>
+    <View style={styles.container}>
+      {allLists && (
+        <View style={styles.listContainer}>
+          <FlatList
+            data={allLists}
+            renderItem={renderList}
+            keyExtractor={(item) => item.listName}
+            removeClippedSubviews={true}
+          />
+        </View>
+      )}
     </View>
   );
 }
@@ -41,9 +62,15 @@ export function AllLists(props) {
 const mapState = (state) => {
   return {
     user: state.user,
+    allLists: state.list.all,
   };
 };
 
-const mapDispatch = (dispatch) => {};
+const mapDispatch = (dispatch) => {
+  return {
+    getUser: () => dispatch(setUserThunk()),
+    getAllLists: () => dispatch(setAllListsThunk()),
+  };
+};
 
-export default connect(mapState, null)(AllLists);
+export default connect(mapState, mapDispatch)(AllLists);

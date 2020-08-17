@@ -1,4 +1,5 @@
 import { firebase } from '../firebase/config';
+const db = firebase.firestore();
 
 //ACTION TYPES
 const SET_ALL_LISTS = 'SET_ALL_LISTS';
@@ -18,7 +19,21 @@ const removeList = (listId) => ({ type: REMOVE_LIST, listId });
 export const setAllListsThunk = () => {
   return async (dispatch) => {
     try {
-      //insert firebase query here
+      const { currentUser } = await firebase.auth();
+      const { uid } = currentUser;
+
+      console.log("you've reached the thunk");
+      const listsRef = db.collection('users').doc(uid).collection('lists');
+      const querySnapshot = await listsRef.get();
+
+      const allLists = [];
+
+      querySnapshot.forEach((doc) => {
+        const list = doc.data();
+        allLists.push(list);
+      });
+
+      dispatch(setAllLists(allLists));
       //call dispatch action with response data returned from query
     } catch (err) {
       console.error(err.message);
