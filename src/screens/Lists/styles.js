@@ -70,4 +70,14 @@ export default StyleSheet.create({
     fontSize: 20,
     color: '#333333',
   },
+  allTasksContainer: {
+    marginTop: 16,
+    borderBottomColor: '#cccccc',
+    borderBottomWidth: 1,
+    paddingBottom: 16,
+  },
+  taskName: {
+    fontSize: 20,
+    color: '#333333',
+  },
 });

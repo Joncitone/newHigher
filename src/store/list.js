@@ -22,7 +22,6 @@ export const setAllListsThunk = () => {
       const { currentUser } = await firebase.auth();
       const { uid } = currentUser;
 
-      console.log("you've reached the thunk");
       const listsRef = db.collection('users').doc(uid).collection('lists');
       const querySnapshot = await listsRef.get();
 
@@ -34,17 +33,29 @@ export const setAllListsThunk = () => {
       });
 
       dispatch(setAllLists(allLists));
-      //call dispatch action with response data returned from query
     } catch (err) {
       console.error(err.message);
     }
   };
 };
 
-export const setSingleListThunk = () => {
+export const setSingleListThunk = (listName) => {
   return async (dispatch) => {
     try {
       //firebase query and dispatch action here
+      const { currentUser } = await firebase.auth();
+      const { uid } = currentUser;
+
+      const listsRef = await db
+        .collection('users')
+        .doc(uid)
+        .collection('lists');
+
+      const listDoc = await listsRef.doc(listName).get();
+
+      const list = listDoc.data();
+      console.log(list);
+      dispatch(setSingleList(list));
     } catch (err) {
       console.error(err.message);
     }
@@ -55,6 +66,8 @@ export const addListThunk = () => {
   return async (dispatch) => {
     try {
       //firebase query and dispatch action here
+      const { currentUser } = await firebase.auth();
+      const { uid } = currentUser;
     } catch (err) {
       console.error(err.message);
     }
@@ -65,6 +78,8 @@ export const updateListThunk = () => {
   return async (dispatch) => {
     try {
       //firebase query and dispatch action here
+      const { currentUser } = await firebase.auth();
+      const { uid } = currentUser;
     } catch (err) {
       console.error(err.message);
     }
@@ -75,6 +90,8 @@ export const removeListThunk = () => {
   return async (dispatch) => {
     try {
       //firebase query and dispatch action here
+      const { currentUser } = await firebase.auth();
+      const { uid } = currentUser;
     } catch (err) {
       console.error(err.message);
     }
