@@ -28,10 +28,13 @@ export function HomeScreen(props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>{`${user.fullName}`}</Text>
-      <Text style={styles.headerText}>Welcome to new Higher( &#10003; )</Text>
+      <Text style={styles.headerText}>Welcome to</Text>
+      <Text style={styles.titleText}>new Higher( &#10003; )</Text>
       <Text style={styles.descriptionText}>
-        {`'this' is an instance of a to-do list application in a Class of its own`}
+        a to-do list application designed to help create the following instance:
+      </Text>
+      <Text style={styles.descriptionText}>
+        let {user.fullName} = new Higher( &#10003; )
       </Text>
       <View style={styles.formContainer}>
         <TouchableOpacity style={styles.button} onPress={onGoToListsPress}>

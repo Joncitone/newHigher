@@ -9,11 +9,10 @@ import {
   View,
 } from 'react-native';
 import styles from './styles';
-import { firebase } from '../../firebase/config';
 import { connect } from 'react-redux';
 
 export function SingleTask(props) {
-  const { user } = props;
+  const { user, singleTask } = props;
   //useState Hook for functional component
   const [state, setState] = useState('');
   //navigation hook
@@ -36,8 +35,9 @@ export function SingleTask(props) {
   };
 
   return (
-    <View>
-      <Text>Single Task Page</Text>
+    <View style={styles.container}>
+      <Text style={styles.headerText}>{singleTask.taskName}</Text>
+      <Text style={styles.descriptionText}>{singleTask.taskDetails}</Text>
     </View>
   );
 }
@@ -45,6 +45,7 @@ export function SingleTask(props) {
 const mapState = (state) => {
   return {
     user: state.user,
+    singleTask: state.task.single,
   };
 };
 

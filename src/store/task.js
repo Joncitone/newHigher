@@ -67,7 +67,6 @@ export const setSingleTaskThunk = (listName, taskName) => {
         singleTask = doc.data();
       });
 
-      console.log('task', singleTask);
       dispatch(setSingleTask(singleTask));
     } catch (err) {
       console.error(err.message);

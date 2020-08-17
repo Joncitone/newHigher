@@ -14,6 +14,15 @@ export default StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
   },
+  titleText: {
+    fontSize: 40,
+    marginTop: 20,
+    marginBottom: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
   descriptionText: {
     fontSize: 20,
     marginTop: 20,
@@ -22,6 +31,8 @@ export default StyleSheet.create({
     paddingBottom: 10,
     paddingLeft: 10,
     paddingRight: 10,
+    alignContent: 'center',
+    textAlign: 'center',
   },
   formContainer: {
     flexDirection: 'row',

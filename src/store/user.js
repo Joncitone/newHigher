@@ -77,14 +77,35 @@ export const signUpUserThunk = (email, password, fullName) => {
       const listsRef = await usersRef.doc(uid).collection('lists');
       const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
-      const list = {
+      const listHired = {
         listName: 'Get Hired',
         ownerId: uid,
         createdAt: timestamp,
       };
 
+      const listGroceries = {
+        listName: 'Groceries',
+        ownerId: uid,
+        createdAt: timestamp,
+      };
+
+      const listErrands = {
+        listName: 'Run Errands',
+        ownerId: uid,
+        createdAt: timestamp,
+      };
+
+      const listCar = {
+        listName: 'Car Stuff',
+        ownerId: uid,
+        createdAt: timestamp,
+      };
+
       //creation of initial list doc upon sign-up
-      await listsRef.doc('Get Hired').set(list);
+      await listsRef.doc('Run Errands').set(listErrands);
+      await listsRef.doc('Car Stuff').set(listCar);
+      await listsRef.doc('Groceries').set(listGroceries);
+      await listsRef.doc('Get Hired').set(listHired);
 
       //CREATE TASK SUB-COLLECTION & DOCs SECTION (basically a seed file)
       //there's a better way to do it with batch, but it doesn't work with .add method
@@ -98,7 +119,7 @@ export const signUpUserThunk = (email, password, fullName) => {
         dueDate: 'After Graduation',
         createdAt: timestamp,
         taskDetails:
-          'Reach out to my existing network, including family and friends. This can be done in two main ways. Widespread on existing social media sites like Facebook, Instagram, Twitter, and of course LinkedIn. Individually through direct contact like emails or direct messages, and phone or video calls.',
+          'Reach out to your existing network, including family and friends. This can be done in two main ways. Widespread on existing social media sites like Facebook, Instagram, Twitter, and of course LinkedIn. Individually through direct contact like emails or direct messages, and phone or video calls.',
       });
       await tasksRef.add({
         ownerId: uid,
@@ -107,7 +128,7 @@ export const signUpUserThunk = (email, password, fullName) => {
         complete: false,
         dueDate: 'After Graduation',
         createdAt: timestamp,
-        taskDetails: `Apply to multiple jobs per day. I can increase my chances of finding a job by making sure to do a few things with each application submission. Customize each resume and cover letter to fit the job description as much as possible. Research the company and the role that I'm applying for. Send Thank-You lettters or emails after interviews.`,
+        taskDetails: `Apply to multiple jobs per day. You can increase your chances of finding a job by making sure to do a few things with each application submission. Customize each resume and cover letter to fit the job description as much as possible. Research the company and the role that I'm applying for. Send Thank-You lettters or emails after interviews.`,
       });
       await tasksRef.add({
         ownerId: uid,

@@ -54,7 +54,6 @@ export const setSingleListThunk = (listName) => {
       const listDoc = await listsRef.doc(listName).get();
 
       const list = listDoc.data();
-      console.log(list);
       dispatch(setSingleList(list));
     } catch (err) {
       console.error(err.message);
