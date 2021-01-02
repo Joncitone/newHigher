@@ -1,5 +1,7 @@
 # newHigher
 
+![image](https://joncitone.github.io/img/slides/project2-pic2.png)
+
 Simple To-Do List application preloaded with helpful activities. Made in 4 days as part of a solo hackathon.
 
 ## Getting Started
